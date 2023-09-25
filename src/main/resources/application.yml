@@ -4,21 +4,21 @@ spring:
       matching-strategy: ant_path_matcher
   data:
     mongodb:
-#      host: localhost
+      #      host: localhost
       port: 27017
       database: test
-      host: 192.168.0.31
+      host: mongodb
   kafka:
     consumer:
-      bootstrap-servers: localhost:9092
-#      bootstrap-servers: 192.168.0.31:9092
+      bootstrap-servers: kafka-msa:29092
+      #      bootstrap-servers: 192.168.0.31:9092
       group-id: bestbook
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
-      bootstrap-servers: localhost:9092
-#      bootstrap-servers: 192.168.0.31:9092
+      bootstrap-servers: kafka-msa:29092
+      #      bootstrap-servers: 192.168.0.31:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
 server:
@@ -28,3 +28,10 @@ logging:
   level:
     org.hibernate.SQL: debug
 
+consumer:
+  topic1:
+    name: rental_rent
+  groupid:
+    name: bestbook
+kafka:
+  bootstrapAddress: kafka-msa:29092
